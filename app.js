@@ -4,7 +4,9 @@ const app= express()
 const PORT= process.env.PORT || 5000
 
 const checkStatus= require('./checkStatus')
+const connectToDb= require('./utils/connectToDb')
 
+await connectToDb();
 checkStatus();
 
 const userRoute= require('./routes/userRoute')
