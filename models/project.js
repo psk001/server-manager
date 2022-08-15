@@ -12,18 +12,21 @@ const projectSchema = new Schema({
     },
     created_at: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
-    project_url: {
-        type: String,
+    urls: {
+        type: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Url'
+        }]
     },
-    current_status: {
-        type: String,
-        default: 'active'
+    status: {
+        type: Boolean,
+        default: true
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: 'User',
     }
 })
 

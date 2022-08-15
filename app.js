@@ -3,15 +3,16 @@ const app= express()
 
 const PORT= process.env.PORT || 5000
 
+require('dotenv').config()
+
 const checkStatus= require('./checkStatus')
 const connectToDb= require('./utils/connectToDb')
 
-await connectToDb();
+connectToDb();
 checkStatus();
 
 const userRoute= require('./routes/userRoute')
 const projectRoute= require('./routes/projectRoute')
-
 
 
 app.use('/auth', userRoute)

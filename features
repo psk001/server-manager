@@ -1,0 +1,24 @@
+// status bool def tru
+// project model remove project_url 
+/* script has bugs */
+// url_monitor model for a project
+   fields- project, 
+        created_at, 
+        url, 
+        method_type- enum, 
+        mongoose req_body, 
+        headers- mongoose mixed obj, 
+        interval in minutes, 
+        status
+//
+
+monitor log- url, 
+             res_status, 
+             and response- json.stringify, 
+             url_id, 
+             reponse limit- 200, 
+             created_at
+
+send mail on status change
+
+

@@ -21,18 +21,11 @@ const userSchema = new Schema({
   },
   created_at: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   status: {
-    type: String,
-    enum: ['active', 'inactive'],
-    default:'active',
-  },
-  projects: {
-    type: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Project",
-    }]
+    type: Boolean,
+    default: true
   }
 });
 
