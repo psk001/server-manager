@@ -13,14 +13,18 @@ const testServer= async () => {
     for(let project of projects){
         const {urls, user_id}= project
 
-        for(let url of urls){
-            const urlData= await Url.findById(url)
+        console.log('urls: ', urls);
+
+        for(let link of urls){
+            console.log('current url: ', link)
+            const urlData= await Url.findById(link).lean()
+
+            console.log('cirrent url data: ', urlData)
             const {url, req_method, req_headers}= urlData
 
             const config= {
                 req_method,
                 url,
-                req_headers
             };
 
             if(req_method=='PUT' || req_method=='POST'){
@@ -52,7 +56,8 @@ const checkStatus= async () => {
 }
 
 cron.schedule('* * * * *', () => {
-    console.log('running every minute to 1 from 5');
+    // console.log('running every minute .... always and forever.... !');
+    testServer()
 });
 
 module.exports= checkStatus
